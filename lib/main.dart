@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => MyHomePage(title: 'Firebase Auth Demo'),
-        '/profile': (context) => ProfileScreen(),
+        '/profile': (context) => TaskListScreen(),
         '/login': (context) => MyHomePage(title: 'Login'),
       },
     );
@@ -53,14 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
-        actions: <Widget>[
-          ElevatedButton(
-            onPressed: () {
-              _signOut();
-            },
-            child: Text('Sign Out'),
-          ),
-        ],
+        actions: <Widget>[],
       ),
       body: Center(
         child: Column(
@@ -117,6 +110,14 @@ class _RegisterEmailSectionState extends State<RegisterEmailSection> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          Container(
+            child: Text(
+              'Registration: ',
+              style: TextStyle(color: Colors.blue),
+            ),
+            padding: const EdgeInsets.all(4),
+            alignment: Alignment.topLeft,
+          ),
           TextFormField(
             controller: _emailController,
             decoration: InputDecoration(labelText: 'Email'),
@@ -153,7 +154,7 @@ class _RegisterEmailSectionState extends State<RegisterEmailSection> {
             alignment: Alignment.center,
             child: Text(
               _initialState
-                  ? 'Please Register'
+                  ? 'Register to create an account'
                   : _success
                       ? 'Successfully registered $_userEmail'
                       : 'Registration failed',
@@ -208,9 +209,15 @@ class _EmailPasswordFormState extends State<EmailPasswordForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-            child: Text('Test sign in with email and password'),
-            padding: const EdgeInsets.all(16),
-            alignment: Alignment.center,
+            child: Text(
+              'Sign in: ',
+              style: TextStyle(color: Colors.blue),
+            ),
+            padding: const EdgeInsets.all(4),
+            alignment: Alignment.topLeft,
+          ),
+          SizedBox(
+            height: 4,
           ),
           TextFormField(
             controller: _emailController,
